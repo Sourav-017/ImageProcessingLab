@@ -2,13 +2,18 @@ import cv2
 import numpy as np
 from pprint import pprint
 
-image = cv2.imread('eagle.jpeg')
+image = cv2.imread('R.jpeg')
 
 img_grey = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-cv2.imshow("window", img_grey)
-cv2.waitKey(0)
+cv2.imwrite('output.jpg', img_grey)
 
 image_array = np.array(img_grey)
 
-pprint(image_array.tolist())
+image_array2 = np.array(image)
+
+negative = 255 - image_array2
+
+cv2.imwrite("colorneg_flower.jpeg", negative)
+
+cv2.imwrite('gray_neg.jpeg', 255 - image_array2)
